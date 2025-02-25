@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donor Profile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="profile.css">
+</head>
+<body>
+<div class="profile-container">
+    <div class="profile-header">
+        <div class="avatar-section">
+            <div class="avatar-wrapper">
+                <div class="camera-btn" onclick="document.getElementById('avatarInput').click()">
+                    <i class="fas fa-camera text-white"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="status-card">
+            <span class="status-circle"></span>
+            <h2>Green Light</h2>
+            <p>It means that person can be donor even today</p>
+        </div>
+    </div>
+
+    <div class="profile-info">
+        <div class="name-section">
+            <h1>Name Surname</h1>
+            <button class="edit-btn" onclick="editName()">
+                <i class="fas fa-pencil-alt fa-lg"></i>
+            </button>
+        </div>
+
+        <ul class="details-list">
+            <li class="detail-item">
+                <span class="detail-label">Blood Type:</span>
+                <span class="detail-value" id="bloodType"></span>
+                <button class="edit-btn" onclick="editBloodType()">
+                    <i class="fas fa-pencil-alt"></i>
+                </button>
+            </li>
+            <li class="detail-item">
+                <span class="detail-label">Last Donation Date:</span>
+                <span class="detail-value" id="lastDonation"></span>
+                <button class="edit-btn" onclick="editDonationDate()">
+                    <i class="fas fa-pencil-alt"></i>
+                </button>
+            </li>
+            <li class="detail-item">
+                <span class="detail-label">Birthdate:</span>
+                <span class="detail-value" id="birthdate"></span>
+                <button class="edit-btn" onclick="editBirthdate()">
+                    <i class="fas fa-pencil-alt"></i>
+                </button>
+            </li>
+            <li class="detail-item">
+                <span class="detail-label">Donated:</span>
+                <span class="detail-value"></span>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="edit-modal" id="editModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 class="modal-title" id="modalTitle">Edit Field</h3>
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+        </div>
+        <div class="modal-body">
+            <input type="text" class="modal-input" id="modalInput">
+            <select class="modal-input" id="modalSelect" style="display: none;">
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+            </select>
+        </div>
+        <div class="modal-actions">
+            <button class="modal-btn cancel" onclick="closeModal()">Cancel</button>
+            <button class="modal-btn save" onclick="saveChanges()">Save</button>
+        </div>
+    </div>
+</div>
+<input type="file" id="avatarInput" style="display: none;" onchange="updateAvatar(event)">
+<div class="footer">
+    <div class="fot-item" onclick="setActive(this)">
+        <a href="#"><i class='bx bxs-home-alt-2'></i><div>Home</div></a>
+    </div>
+    <div class="fot-item" onclick="setActive(this)">
+        <a href="#"><i class='bx bx-donate-heart'></i><div>Help</div></a>
+    </div>
+    <div class="fot-item" onclick="setActive(this)">
+        <a href="#"><i class='bx bxs-droplet'></i><div>Donations</div></a>
+    </div>
+    <div class="fot-item" onclick="setActive(this)">
+        <a href="#"><i class='bx bxs-location-plus'></i><div>Locations</div></a>
+    </div>
+    <div class="fot-item active" onclick="setActive(this)">
+        <a href="#"><i class='bx bx-user'></i><div>Profile</div></a>
+    </div>
+</div>
+<script src="profile.js"></script>
+</body>
+</html>
