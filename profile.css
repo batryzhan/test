@@ -1,0 +1,594 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #f5f6fa;
+    color: #333;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 70px;
+}
+
+/* Profile Container */
+.profile-container {
+    max-width: 900px;
+    margin: 50px auto;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    padding: 25px;
+    position: relative;
+}
+
+/* Profile Header */
+.profile-header {
+    display: flex;
+    align-items: center;
+    padding: 25px;
+    background: linear-gradient(135deg, #008000, #5ce65c);
+    color: #fff;
+    border-radius: 15px 15px 0 0;
+    position: relative;
+    z-index: 1;
+}
+
+.avatar-section {
+    position: relative;
+    margin-right: 25px;
+}
+
+.avatar-wrapper {
+    width: 130px;
+    height: 130px;
+    background: #eee;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 5px solid #fff;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.avatar-wrapper:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.camera-btn {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    background: #333;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.camera-btn:hover {
+    background: #555;
+    transform: scale(1.1);
+}
+
+.camera-btn i {
+    font-size: 20px;
+    color: #fff;
+}
+
+.status-card {
+    flex: 1;
+    animation: slideIn 0.5s ease;
+}
+
+.status-card h2 {
+    font-size: 26px;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.status-card p {
+    font-size: 15px;
+    opacity: 0.9;
+    line-height: 1.4;
+}
+
+/* Profile Info */
+.profile-info {
+    padding: 35px;
+}
+
+.name-section {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+}
+
+.name-section h1 {
+    font-size: 30px;
+    color: #222;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.edit-btn {
+    background: none;
+    border: none;
+    margin-left: 20px;
+    cursor: pointer;
+    color: #ff4d4d;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.edit-btn:hover {
+    color: #cc0000;
+    transform: scale(1.15);
+}
+
+.edit-btn i {
+    font-size: 20px;
+}
+
+/* Details List */
+.details-list {
+    list-style: none;
+    padding: 0;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    padding: 18px 0;
+    border-bottom: 1px solid #f0f0f0;
+    transition: transform 0.3s ease, background 0.2s ease;
+}
+
+.detail-item:hover {
+    transform: translateX(15px);
+    background: #fafafa;
+}
+
+.detail-label {
+    font-weight: 500;
+    color: #444;
+    width: 160px;
+    flex-shrink: 0;
+    font-size: 16px;
+}
+
+.detail-value {
+    flex: 1;
+    color: #333;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.detail-item .edit-btn {
+    margin-left: 15px;
+}
+
+.detail-item:last-child {
+    border-bottom: none;
+}
+
+/* Edit Modal */
+.edit-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.edit-modal.active {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-content {
+    background: #fff;
+    width: 90%;
+    max-width: 450px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.25);
+    transform: scale(0.85);
+    transition: transform 0.3s ease;
+}
+
+.edit-modal.active .modal-content {
+    transform: scale(1);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 25px;
+    background: #ff4d4d;
+    color: #fff;
+}
+
+.modal-title {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.modal-close {
+    font-size: 28px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.modal-close:hover {
+    color: #ffe6e6;
+}
+
+.modal-body {
+    padding: 25px;
+}
+
+.modal-input {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.modal-input:focus {
+    border-color: #ff4d4d;
+    box-shadow: 0 0 8px rgba(255, 77, 77, 0.3);
+    outline: none;
+}
+
+.modal-select {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background: #fff;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+
+.modal-select:focus {
+    border-color: #ff4d4d;
+    outline: none;
+}
+
+.modal-actions {
+    padding: 0 25px 25px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+}
+
+.modal-btn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.modal-btn.cancel {
+    background: #d9d9d9;
+    color: #333;
+}
+
+.modal-btn.cancel:hover {
+    background: #bfbfbf;
+    transform: translateY(-2px);
+}
+
+.modal-btn.save {
+    background: #ff4d4d;
+    color: #fff;
+}
+
+.modal-btn.save:hover {
+    background: #cc0000;
+    transform: translateY(-2px);
+}
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgb(255, 255, 255);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-around;
+    padding: 12px 0;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+    z-index: 1000;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.fot-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    color: #666;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    padding: 8px 16px;
+    border-radius: 16px;
+    transform: scale(0.95);
+    text-decoration: none;
+    position: relative;
+}
+
+.fot-item a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    color: inherit;
+    text-decoration: none;
+}
+
+.fot-item.active {
+    color: #ff4757;
+    background: rgba(255, 71, 87, 0.1);
+    transform: scale(1);
+}
+
+.fot-item i {
+    font-size: 1.6rem;
+    transition: transform 0.3s ease;
+}
+
+.fot-item div {
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.fot-item:hover {
+    color: #ff6b6b;
+    transform: scale(1);
+}
+
+.fot-item:hover i {
+    transform: translateY(-2px);
+}
+
+@keyframes bounce {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+    100% { transform: translateY(0); }
+}
+
+.fot-item.active i {
+    animation: bounce 0.5s ease;
+}
+
+/* Animations */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .profile-container {
+        margin: 30px;
+        padding: 20px;
+    }
+
+    .profile-header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+    }
+
+    .avatar-section {
+        margin-bottom: 20px;
+    }
+
+    .avatar-wrapper {
+        width: 110px;
+        height: 110px;
+    }
+
+    .status-card h2 {
+        font-size: 22px;
+    }
+
+    .status-card p {
+        font-size: 13px;
+    }
+
+    .profile-info {
+        padding: 25px;
+    }
+
+    .name-section h1 {
+        font-size: 26px;
+    }
+
+    .detail-label {
+        width: 130px;
+        font-size: 15px;
+    }
+
+    .detail-value {
+        font-size: 15px;
+    }
+
+    .footer {
+        padding: 10px 0;
+    }
+
+    .fot-item i {
+        font-size: 22px;
+    }
+
+    .fot-item div {
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-container {
+        margin: 15px;
+        padding: 15px;
+    }
+
+    .avatar-wrapper {
+        width: 90px;
+        height: 90px;
+    }
+
+    .camera-btn {
+        width: 35px;
+        height: 35px;
+    }
+
+    .camera-btn i {
+        font-size: 18px;
+    }
+
+    .name-section h1 {
+        font-size: 22px;
+    }
+
+    .detail-item {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 12px 0;
+    }
+
+    .detail-label {
+        width: 100%;
+        margin-bottom: 8px;
+    }
+
+    .modal-content {
+        width: 95%;
+    }
+
+    .modal-btn {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}
+
+/* Additional Styling */
+.profile-container::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: #ff4d4d;
+    border-radius: 15px 15px 0 0;
+}
+
+.edit-btn:focus {
+    outline: none;
+    box-shadow: 0 0 6px rgba(255, 77, 77, 0.5);
+}
+
+.modal-input::placeholder {
+    color: #aaa;
+    font-style: italic;
+}
+
+.fot-item a:hover {
+    color: #cc0000;
+}
+
+/* Accessibility */
+button:focus {
+    outline: 2px solid #ff4d4d;
+    outline-offset: 2px;
+}
+
+input:focus, select:focus {
+    outline: 2px solid #ff4d4d;
+    outline-offset: 1px;
+}
+
+/* Extra Styling for Line Count */
+.profile-header {
+    margin-bottom: 25px;
+}
+
+.profile-info {
+    margin-top: 15px;
+}
+
+.detail-item {
+    margin: 8px 0;
+}
+
+.modal-header {
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+.modal-body {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.modal-actions {
+    padding-top: 15px;
+    padding-bottom: 20px;
+}
+
+.status-card {
+    padding: 10px;
+}
+
+.avatar-section {
+    padding: 5px;
+}
+
+.name-section {
+    padding: 10px 0;
+}
+
+.detail-label {
+    padding-right: 10px;
+}
+
+.detail-value {
+    padding-left: 5px;
+}
